@@ -33,7 +33,7 @@ jobs:
       env:
         GOOGLE_APPLICATION_CREDENTIALS: ./gcp_key.json
       run: |
-        papermill colud_location.ipynb colud_location.ipynb
+        python -m papermill notebooks/colud_location.ipynb notebooks/colud_location.ipynb
 
     # 3. Save the dataset and the updated notebook back to Github
     - name: Commit and Push Changes
