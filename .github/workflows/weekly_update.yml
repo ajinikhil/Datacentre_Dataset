@@ -2,8 +2,11 @@ name: Weekly Cloud Location Dataset Update via Notebook
 
 on:
   schedule:
-    - cron: '0 0 * * 0' # Runs every Sunday at 00:00 UTC
-  workflow_dispatch: # Allows manual trigger
+    - cron: '0 0 * * 0'
+  workflow_dispatch:
+
+permissions:
+  contents: write   # <-- allows pushing commits
 
 jobs:
   update-dataset:
@@ -12,6 +15,8 @@ jobs:
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Set up Python
       uses: actions/setup-python@v5
