@@ -23,3 +23,5 @@ install
 ```
 pip install google-cloud-locationfinder
 ```
+
+[click here](datasets/cloud_locations_dataset.csv) to see dataset which contaions cloud locations: [click here](datasets/cloud_locations_dataset.csv), which updates on every Sunday.
