@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write   # <-- allows pushing commits
+  contents: write
 
 jobs:
   update-dataset:
@@ -39,8 +39,23 @@ jobs:
         python -m papermill colud_location.ipynb colud_location.ipynb
 
     - name: Commit and Push Changes
+      id: commit
       run: |
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
         git add datasets/cloud_locations_dataset.csv scripts/colud_location.ipynb
+        if git diff --staged --quiet -- datasets/cloud_locations_dataset.csv; then
+          echo "csv_changed=false" >> "$GITHUB_OUTPUT"
+        else
+          echo "csv_changed=true" >> "$GITHUB_OUTPUT"
+        fi
         git diff --quiet && git diff --staged --quiet || (git commit -m "Automated Weekly Dataset Update via Notebook" && git push)
+
+    - name: Upload to Kaggle
+      if: steps.commit.outputs.csv_changed == 'true'
+      env:
+        KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+        KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+      run: |
+        pip install kaggle
+        kaggle datasets version -p datasets/ -m "Automated weekly update" --dir-mode zip
