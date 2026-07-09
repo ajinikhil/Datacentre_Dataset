@@ -23,16 +23,14 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    # 1. Decode the base64 secret back into a valid JSON key file
+    # 1. Authenticate using the official Google Cloud auth action
     - name: Authenticate to Google Cloud
-      run: |
-        echo "${{ secrets.GCP_SA_KEY }}" | base64 -d > gcp_key.json
-        python -c "import json; json.load(open('gcp_key.json')); print('✅ Valid JSON key file')"
+      uses: google-github-actions/auth@v2
+      with:
+        credentials_json: '${{ secrets.GCP_SA_KEY }}'
 
     # 2. RUN THE JUPYTER NOTEBOOK USING PAPERMILL
     - name: Run Jupyter Notebook
-      env:
-        GOOGLE_APPLICATION_CREDENTIALS: ./gcp_key.json
       run: |
         python -m papermill scripts/colud_location.ipynb scripts/colud_location.ipynb
 
