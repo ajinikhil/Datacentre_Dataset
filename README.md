@@ -29,3 +29,5 @@ pip install google-cloud-locationfinder
 ### PeeringDB
 
 I used [PeeringDB](https://www.peeringdb.com/) to extract major data centres in the world
+
+[click here](../datasets/datacentre_list.csv) to see the dataset which contains datacentre locations, whihc autoupdates every 3 months
