@@ -24,4 +24,8 @@ install
 pip install google-cloud-locationfinder
 ```
 
-[click here](datasets/cloud_locations_dataset.csv) to see dataset which contains cloud locations: [click here](datasets/cloud_locations_dataset.csv), which updates on every Sunday.
+[click here](datasets/cloud_locations_dataset.csv) to see dataset which contains cloud locations, which updates on every Sunday.
+
+### PeeringDB
+
+I used [PeeringDB](https://www.peeringdb.com/) to extract major data centres in the world
