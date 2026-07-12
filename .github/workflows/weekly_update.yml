@@ -36,7 +36,7 @@ jobs:
     - name: Run Jupyter Notebook
       working-directory: scripts
       run: |
-        python -m papermill colud_location.ipynb executed_colud_location.ipynb
+        python -m papermill colud_location.ipynb
 
     - name: Commit and Push Changes
       id: commit
