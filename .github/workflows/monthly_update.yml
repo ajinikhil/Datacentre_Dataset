@@ -28,14 +28,10 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Run Sync Script
-      env:
-        PEERING_DB_API: ${{ secrets.PEERING_DB_API }}
-      run: |
-        python sync_script.py
-
     - name: Run Jupyter Notebook
       working-directory: scripts
+      env:
+        PEERING_DB_API: ${{ secrets.PEERING_DB_API }}
       run: |
         python -m papermill peeringDB.ipynb executed_peeringDB.ipynb
 
@@ -45,7 +41,7 @@ jobs:
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
-        git add datasets/peeringDB/datacentre_list.csv scripts/executed_peeringDB.ipynb
+        git add datasets/peeringDB/datacentre_list.csv
 
         if git diff --staged --quiet -- datasets/peeringDB/datacentre_list.csv; then
           echo "csv_changed=false" >> "$GITHUB_OUTPUT"
