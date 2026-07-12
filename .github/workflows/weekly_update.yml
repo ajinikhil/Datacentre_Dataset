@@ -2,7 +2,7 @@ name: weekly Cloud Location Dataset Update via Notebook
 
 on:
   schedule:
-    - cron: '0 0  * * 0'
+    - cron: '0 0 * * 0'
   workflow_dispatch:
 
 permissions:
@@ -36,7 +36,7 @@ jobs:
     - name: Run Jupyter Notebook
       working-directory: scripts
       run: |
-        python -m papermill colud_location.ipynb
+        python -m papermill cloud_location.ipynb executed_colud_location.ipynb
 
     - name: Commit and Push Changes
       id: commit
@@ -44,7 +44,7 @@ jobs:
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
-        git add datasets/cloud_locations/cloud_locations_dataset.csv scripts/executed_colud_location.ipynb
+        git add datasets/cloud_locations/cloud_locations_dataset.csv
 
         if git diff --staged --quiet -- datasets/cloud_locations/cloud_locations_dataset.csv; then
           echo "csv_changed=false" >> "$GITHUB_OUTPUT"
@@ -55,7 +55,7 @@ jobs:
         if git diff --staged --quiet; then
           echo "No changes detected"
         else
-          git commit -m "Automated monthly cloud location dataset update"
+          git commit -m "Automated weekly cloud location dataset update"
           git push
         fi
 
@@ -68,5 +68,5 @@ jobs:
         pip install kaggle
         kaggle datasets version \
           -p datasets/cloud_locations/ \
-          -m "Automated monthly update" \
+          -m "Automated weekly update" \
           --dir-mode zip
