@@ -1,4 +1,4 @@
-name: Monthly Cloud Location Dataset Update via Notebook
+name: weekly Cloud Location Dataset Update via Notebook
 
 on:
   schedule:
