@@ -1,8 +1,8 @@
-name: Weekly Cloud Location Dataset Update via Notebook
+name: Monthly Cloud Location Dataset Update via Notebook
 
 on:
   schedule:
-    - cron: '0 0 * * 0'
+    - cron: '0 0  * * 0'
   workflow_dispatch:
 
 permissions:
@@ -36,20 +36,28 @@ jobs:
     - name: Run Jupyter Notebook
       working-directory: scripts
       run: |
-        python -m papermill colud_location.ipynb colud_location.ipynb
+        python -m papermill colud_location.ipynb executed_colud_location.ipynb
 
     - name: Commit and Push Changes
       id: commit
       run: |
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
-        git add datasets/cloud_locations_dataset.csv scripts/colud_location.ipynb
-        if git diff --staged --quiet -- datasets/cloud_locations_dataset.csv; then
+
+        git add datasets/cloud_locations/cloud_locations_dataset.csv scripts/executed_colud_location.ipynb
+
+        if git diff --staged --quiet -- datasets/cloud_locations/cloud_locations_dataset.csv; then
           echo "csv_changed=false" >> "$GITHUB_OUTPUT"
         else
           echo "csv_changed=true" >> "$GITHUB_OUTPUT"
         fi
-        git diff --quiet && git diff --staged --quiet || (git commit -m "Automated Weekly Dataset Update via Notebook" && git push)
+
+        if git diff --staged --quiet; then
+          echo "No changes detected"
+        else
+          git commit -m "Automated monthly cloud location dataset update"
+          git push
+        fi
 
     - name: Upload to Kaggle
       if: steps.commit.outputs.csv_changed == 'true'
@@ -58,4 +66,7 @@ jobs:
         KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
       run: |
         pip install kaggle
-        kaggle datasets version -p datasets/ -m "Automated weekly update" --dir-mode zip
+        kaggle datasets version \
+          -p datasets/cloud_locations/ \
+          -m "Automated monthly update" \
+          --dir-mode zip
