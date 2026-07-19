@@ -74,4 +74,4 @@ jobs:
         kaggle datasets version \
           -p datasets/cloud_locations/ \
           -m "Automated weekly update" \
-          ---dir-mode zip
+          --dir-mode zip
