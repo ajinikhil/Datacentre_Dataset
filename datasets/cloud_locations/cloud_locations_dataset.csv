@@ -374,6 +374,7 @@ germanywestcentral,AZURE,3,DE,REGION,1,0.0,,azure-germanywestcentral
 germanywestcentral-az1,AZURE,3,DE,ZONE,2,0.0,azure-germanywestcentral,azure-germanywestcentral-az1
 germanywestcentral-az2,AZURE,3,DE,ZONE,2,0.0,azure-germanywestcentral,azure-germanywestcentral-az2
 germanywestcentral-az3,AZURE,3,DE,ZONE,2,0.0,azure-germanywestcentral,azure-germanywestcentral-az3
+indiasouthcentral,AZURE,3,IN,REGION,1,0.0,,azure-indiasouthcentral
 indonesiacentral,AZURE,3,ID,REGION,1,0.0,,azure-indonesiacentral
 indonesiacentral-az1,AZURE,3,ID,ZONE,2,0.0,azure-indonesiacentral,azure-indonesiacentral-az1
 indonesiacentral-az2,AZURE,3,ID,ZONE,2,0.0,azure-indonesiacentral,azure-indonesiacentral-az2
