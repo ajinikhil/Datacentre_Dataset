@@ -65,7 +65,7 @@ jobs:
         fi
 
     - name: Upload to Kaggle
-      if: steps.commit.outputs.csv_changed == 'true'
+      if: steps.commit.outputs.csv_changed == 'true' || inputs.force_upload == 'true'
       env:
         KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
         KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
