@@ -266,6 +266,7 @@ euw1-az3,AWS,2,IE,ZONE,2,0.0,aws-eu-west-1,aws-euw1-az3
 euw2-az1,AWS,2,GB,ZONE,2,0.0,aws-eu-west-2,aws-euw2-az1
 euw2-az2,AWS,2,GB,ZONE,2,0.0,aws-eu-west-2,aws-euw2-az2
 euw2-az3,AWS,2,GB,ZONE,2,0.0,aws-eu-west-2,aws-euw2-az3
+euw2-az4,AWS,2,GB,ZONE,2,0.0,aws-eu-west-2,aws-euw2-az4
 euw3-az1,AWS,2,FR,ZONE,2,0.0,aws-eu-west-3,aws-euw3-az1
 euw3-az2,AWS,2,FR,ZONE,2,0.0,aws-eu-west-3,aws-euw3-az2
 euw3-az3,AWS,2,FR,ZONE,2,0.0,aws-eu-west-3,aws-euw3-az3
