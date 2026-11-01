@@ -365,6 +365,7 @@ eastus2,AZURE,3,US,REGION,1,0.0,,azure-eastus2
 eastus2-az1,AZURE,3,US,ZONE,2,0.0,azure-eastus2,azure-eastus2-az1
 eastus2-az2,AZURE,3,US,ZONE,2,0.0,azure-eastus2,azure-eastus2-az2
 eastus2-az3,AZURE,3,US,ZONE,2,0.0,azure-eastus2,azure-eastus2-az3
+eastus2-az5,AZURE,3,US,ZONE,2,0.0,azure-eastus2,azure-eastus2-az5
 eastus2euap,AZURE,3,US,REGION,1,0.0,,azure-eastus2euap
 eastus2euap-az1,AZURE,3,US,ZONE,2,0.0,azure-eastus2euap,azure-eastus2euap-az1
 eastus2euap-az2,AZURE,3,US,ZONE,2,0.0,azure-eastus2euap,azure-eastus2euap-az2
